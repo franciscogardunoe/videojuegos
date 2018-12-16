@@ -1,0 +1,276 @@
+{% extends 'AppBundle:Layout:template.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/plugins/iCheck/all.css')}}">
+{% endblock %}
+
+{% block title %}Profesores{% endblock %}
+
+{% block subtitle %}<small></small>{%endblock%}
+
+{% block navigation %}
+    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li class="active">
+        Profesores
+    </li>
+{%endblock%}
+
+{% block maincontent %}
+    <div class="row">
+        <div class="col-lg-12">
+            <button id="btn-to-register" class="registerTeacher pull-right btn btn-lg btn-primary mb-2" ><i class="fa fa-plus"></i>&nbsp;&nbsp;Registrar Profesor</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">  
+        <div class="col-lg-12">
+            <div class="div-registerTeacher">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{%if flag==0%}Registrar Profesor{%elseif flag==1%}Editar Profesor{%endif%}</h3>
+                    </div>
+                    {{ form_start(formTeacher) }}
+                    {{ form_start(formType) }}
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.name)}}
+                                            {{form_widget(formTeacher.name)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.lastname)}}
+                                            {{form_widget(formTeacher.lastname)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.secondsurname)}}
+                                            {{form_widget(formTeacher.secondsurname)}}
+                                        </div>
+                                    </div>                               
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.gender)}}
+                                            {{form_widget(formTeacher.gender, {'attr': {'class': 'flat-red'} })}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.birthdaydate)}}
+                                            {{form_widget(formTeacher.birthdaydate)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.curp)}}
+                                            {{form_widget(formTeacher.curp)}}
+                                        </div>
+                                    </div>                               
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.imss)}}
+                                            {{form_widget(formTeacher.imss)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.email)}}
+                                            {{form_widget(formTeacher.email)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formTeacher.civil)}}
+                                            {{form_widget(formTeacher.civil)}}
+                                        </div>
+                                    </div>                               
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formType.profession)}}
+                                            {{form_widget(formType.profession)}}
+                                        </div>
+                                    </div>     
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{form_label(formType.type)}}
+                                            {{form_widget(formType.type)}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox" class="flat-red" checked>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="flat-red">
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" class="flat-red" disabled>
+                                                Flat green skin checkbox
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button class="btn btn-danger registerTeacher" ><i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar</button>
+                            {{ form_widget(formTeacher.submit, {'attr': {'class': 'btn btn-primary'},'label': 'Aceptar'}) }}
+                        </div>
+                    </div>
+                    {{ form_end(formType) }}
+                    {{ form_end(formTeacher) }}
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+            <div class="div-showTeacher">
+                <div class="box box-default">
+                    <div class="box-header">
+                        <h3 class="box-title">Profesores</h3>
+                    </div>
+                    <div class="box-body table-responsive no-padding">
+                        {%if teachers!=null%}
+                            <table  class="table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>GÃ©nero</th>
+                                    <th>Correo ElectrÃ³nico</th>
+                                    <th>ProfesiÃ³n</th>
+                                    <th>Tipo Profesor</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                {% for item in teachers%}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{item.u_lastname ~ ' ' ~ item.u_secondsurname ~ ' ' ~ item.u_name}}</td>
+                                        <td>
+                                            {%if item.u_gender == 1%}
+                                                Hombre
+                                            {%elseif item.u_gender == 0 %}
+                                                Mujer
+                                            {%endif%}
+                                        </td>
+                                        <td>{{item.u_email}}</td>
+                                        <td>{{item.p_profession}}</td>
+                                        <td>{{item.t_type}}</td>
+                                        <td>
+                                            <a href="{{path('app_admin_teacher_update', {'id':item.u_id | urlencrypt})}}" class="btn btn-warning" title="Editar Profesor"><i class="fa fa-pencil"></i></a>
+                                                {#<a href="{{path('app_admin_teacher_delete',{'id':item.u_id | urlencrypt})}}" class="btn btn-danger" title="Eliminar Profesor"><i class="fa fa-trash"></i></a>#}
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteTeacher-{{item.u_id}}" title="Eliminar Profesor"><i class="fa fa-trash"></i></button>
+                                        </td>                                                           
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <div class="pull-right">
+                                {{knp_pagination_render(teachers)}}
+                            </div>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for item in teachers %}
+            <div class="modal fade" id="deleteTeacher-{{item.u_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmar EliminaciÃ³n</h4>
+                        </div>
+                        <form action="{{path('app_admin_teacher_delete',{'id':item.u_id | urlencrypt})}}" method="post">
+                            <div class="modal-body">
+                                <center>
+                                    <h3>Â¿EstÃ¡s seguro que deseas eliminar el siguiente profesor?</h3>
+                                    <h3><b>{{item.u_lastname ~ ' ' ~ item.u_secondsurname ~ ' ' ~ item.u_name}}</b></h3>
+                                </center>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;&nbsp;Cerrar</button>
+                                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i>&nbsp;&nbsp;Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        {%endfor%}
+
+    </div>
+{%endblock%}
+
+{% block js %}
+    <script src="{{asset('assets/plugins/iCheck/icheck.min.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.div-registerTeacher').hide();
+            if ('{{flag}}' == 0) {
+                $('.div-registerTeacher').hide();
+            } else if ('{{flag}}' == 1) {
+                $('.div-registerTeacher').fadeIn();
+                $('.div-showTeacher').hide();
+            }
+        });
+
+        var cont = 0;
+        $('.registerTeacher').on('click', function () {
+            if (cont == 0) {
+                $('.div-registerTeacher').fadeIn();
+                cont = 1;
+            } else {
+                $('.div-registerTeacher').hide();
+                cont = 0;
+            }
+        });
+        //Flat red color scheme for iCheck
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        });
+    </script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
+{% endblock %}

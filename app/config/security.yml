@@ -10,8 +10,8 @@ security:
     providers:
         user_db_provider:
             entity:
-                class: BackendBundle:User
-                property: email
+                class: BackendBundle:Usuario
+                property: correo
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
