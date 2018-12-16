@@ -1,0 +1,33 @@
+login:
+    path: /login
+    defaults: { _controller: AppBundle:Default:login }
+    
+login_check:
+    path: /login_check
+    
+role_check:
+    path: /role_check
+    defaults: { _controller: AppBundle:Default:roleCheck}
+    
+logout:
+    path: /logout
+    
+app_index:
+    path: /
+    defaults: { _controller: AppBundle:Default:index }
+
+YML_root:
+    resource: "@AppBundle/Resources/config/routing/root.yml"
+    prefix: /r
+
+YML_daniela:
+    resource: "@AppBundle/Resources/config/routing/daniela.yml"
+    prefix: /d
+    
+YML_sara:
+    resource: "@AppBundle/Resources/config/routing/sara.yml"
+    prefix: /s
+    
+YML_evelyn:
+    resource: "@AppBundle/Resources/config/routing/evelyn.yml"
+    prefix: /e
