@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Log in</title>
+        <title>GamePlanet</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -30,20 +30,20 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>SIES</b>BETA</a>
-                <h4>Sistema Integral Estudiantil</h4>
+                <a href="../../index2.html"><i class="fa fa-gamepad"></i>&nbsp;<b>GAME</b>PLANET</a>
+                <h4>Reseñas de Videojuegos</h4>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
-                <p class="login-box-msg">Inicio de SesiÃ³n</p>
+                <p class="login-box-msg">Inicio de Sesión</p>
 
                 <form action="{{path('login_check')}}" method="post">
                     <div class="form-group has-feedback">
-                        <input id="email" name="_email" type="email" class="form-control" placeholder="Correo ElectrÃ³nico" required="">
+                        <input id="username" name="_username" type="email" class="form-control" placeholder="Correo Electrónico" required="">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input id="password" name="_password" type="password" class="form-control" placeholder="ContraseÃ±a" required="">
+                        <input id="password" name="_password" type="password" class="form-control" placeholder="Contraseña" required="">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
@@ -56,13 +56,13 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <input type="hidden" name="_tarjet_path" value="/users"/>
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
+                            <input type="hidden" name="_tarjet_path" value="/role_check"/>
+                            <button class="btn btn-primary btn-block btn-flat">Iniciar</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-                <a href="#">OlvidÃ© mi contraseÃ±a</a><br>
+                <a href="{{path("app_register_user")}}">Crear una cuenta</a><br>
             </div>
             <!-- /.login-box-body -->
         </div>

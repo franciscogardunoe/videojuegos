@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Dashboard</title>
+        <title>GamePlanet | Admin</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -48,84 +48,42 @@
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo">
+                <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>SIES</b></span>
+                    <span class="logo-mini"><b>GAME</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>SIES</b></span>
+                    <span class="logo-lg"><b><i class="fa fa-gamepad"></i>&nbsp;GAME</b>PLANET</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            <!-- Notifications: style can be found in dropdown.less -->
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">10</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 10 notifications</li>
-                                    <li>
-                                        <!-- inner menu: contains the actual data -->
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                                                    page and may cause design problems
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-red"></i> 5 new members joined
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-user text-red"></i> You changed your username
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#">View all</a></li>
-                                </ul>
-                            </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Francisco Javier</span>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{{asset('assets/img/usuario160.png')}}" class="user-image" alt="{{app.user.nombre}}">
+                                    <span class="hidden-xs">{{app.user.nombre}}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                        <img src="{{asset('assets/img/usuario.png')}}" class="img-circle" alt="{{app.user.nombre}}">
                                         <p>
-                                            Francisco Javier
+                                            {{app.user.nombre}}
                                             <small>Administrador</small>
                                         </p>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                            {#<a href="#" class="btn btn-default btn-flat">Perfil</a>#}
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Cerrar SesiÃ³n</a>
+                                            <a href="{{path("logout")}}" class="btn btn-default btn-flat">Cerrar sesión</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -144,37 +102,38 @@
                             <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Francisco Javier</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i>Conectado</a>
+                            <p>{{app.user.nombre}}</p>
+                            <i class="fa fa-circle text-success"></i>&nbsp;Conectado
                         </div>
                     </div>
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">MENÃš</li>
+                        <li class="header">MENÚ</li>
                         <li>
                             <a href="pages/widgets.html">
-                                <i class="fa fa-mortar-board"></i> <span>Carreras</span>
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="pages/widgets.html">
+                                <i class="fa fa-gamepad"></i> <span>Videojuegos</span>
                             </a>
                         </li>
                         <li>
                             <a href="pages/widgets.html">
-                                <i class="fa fa-group"></i> <span>Grupos</span>
+                                <i class="fa fa-sticky-note"></i> <span>Clasificaciones</span>
                             </a>
                         </li>
                         <li>
                             <a href="pages/widgets.html">
-                                <i class="fa fa-book"></i> <span>Materias</span>
+                                <i class="fa fa-list-ul"></i> <span>Tipos de juegos</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{path('app_admin_teacher')}}">
-                                <i class="fa fa-user"></i><span>Profesores</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/calendar.html">
-                                <i class="fa fa-list"></i><span>Ãreas</span>
+                            <a href="">
+                                <i class="fa fa-users"></i><span>Usuarios</span>
                             </a>
                         </li>
                     </ul>

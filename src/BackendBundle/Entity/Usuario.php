@@ -42,7 +42,7 @@ class Usuario implements UserInterface, EquatableInterface, \Serializable {
     /**
      * @var string
      *
-     * @ORM\Column(name="correo", type="string", length=45, nullable=true)
+     * @ORM\Column(name="correo", type="string", length=15, nullable=true, unique=true)
      */
     private $correo;
 
@@ -196,7 +196,7 @@ class Usuario implements UserInterface, EquatableInterface, \Serializable {
     }
 
     public function isEqualTo(UserInterface $user) {
-        if ($user->getId() == $this->getIdusuario()) {
+        if ($user->getIdusuario() == $this->getIdusuario()) {
             return true;
         } else {
             return false;
@@ -205,14 +205,14 @@ class Usuario implements UserInterface, EquatableInterface, \Serializable {
 
     public function serialize() {
         return serialize(array(
-            $this->id,
+            $this->idusuario,
             $this->correo,
             $this->nombre
         ));
     }
 
     public function unserialize($serialized) {
-        list ($this->id,
+        list ($this->idusuario,
                 $this->correo,
                 $this->nombre
                 ) = unserialize($serialized);

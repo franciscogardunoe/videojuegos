@@ -15,6 +15,10 @@ logout:
 app_index:
     path: /
     defaults: { _controller: AppBundle:Default:index }
+    
+app_register_user:
+    path: /register/account
+    defaults: { _controller: AppBundle:Default:registerUser }
 
 YML_root:
     resource: "@AppBundle/Resources/config/routing/root.yml"
