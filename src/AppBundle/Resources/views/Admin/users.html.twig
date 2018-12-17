@@ -1,0 +1,71 @@
+{# empty Twig template #}
+{% extends 'AppBundle:Layout:template.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/plugins/iCheck/all.css')}}">
+{% endblock %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block subtitle %}<small></small>{%endblock%}
+
+{% block navigation %}
+
+{%endblock%}
+
+{% block maincontent %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Registrar Usuario</h3>
+        </div>
+        <div class="box-body">
+            {{ form_start
+(formUsuario) }}
+            {{ form_errors(formUsuario) }}
+            {{ form_row(formUsuario.last_name)}}
+            {{ form_row(formUsuario.nombre)}}
+            {{ form_row(formUsuario.correo)}}
+            {{ form_row(formUsuario.password)}}
+            <br>
+            {{ form_widget(formUsuario.submit, {'attr': {'class': 'btn btn-primary'},'label': 'Aceptar'}) }}
+            {{ form_end(formUsuario) }}
+        </div>
+    </div>
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Usuarios</h3>
+            </div>
+            
+            <div class="box-body">
+        {%if listUsers!=null%}
+            <table class="table table-bordered">
+                <tr>
+                    <th>Lasr name</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                <tr>
+                <tbody>
+                    {% for item in listUsers %}
+                        <tr>
+                            <td>{{item.last_name}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.correo}}</td>
+                            <td>
+                                <a href="{{path('app_admin_update',{'id':item.idUsuario | urlencrypt})}}" class="btn btn-primary">Modificar</a>
+                                <a href="{{path('app_admin_delete',{'id':item.idUsuario})}}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {{knp_pagination_render(listUsers)}}
+        {%endif%}
+        </div>
+        </div>
+
+{%endblock%}
+
+{% block js %}
+
+{% endblock %}

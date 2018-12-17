@@ -1,2 +1,16 @@
 ## YAML Template.
 ---
+app_admin:
+    path: /admin/users
+    defaults: { _controller: AppBundle:Sara:users }
+
+
+app_admin_update:
+    path: /admin/update/{id}
+    defaults: { _controller: AppBundle:Sara:update }
+
+    
+app_admin_delete:
+    path: /admin/delete/{id}
+    defaults: { _controller: AppBundle:Sara:delete }
+      
