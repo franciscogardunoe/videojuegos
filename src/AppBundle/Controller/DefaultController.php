@@ -54,8 +54,13 @@ class DefaultController extends Controller {
         return $this->render("AppBundle:Default:registroCuenta.html.twig", array('formUser' => $form->createView()));
     }
 
-    public function userDashboardAction(Request $requesr) {
-        return $this->render("AppBundle:User:dashboard.html.twig", array());
+    public function userDashboardAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->getRepository("BackendBundle:Videojuego")->findAll();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->getInt('page', 1), 3);
+        return $this->render("AppBundle:User:dashboard.html.twig", array('listVideogames' => $pagination));
     }
 
     public function adminDashboardAction(Request $request) {

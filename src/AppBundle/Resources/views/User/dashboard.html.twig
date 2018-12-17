@@ -10,6 +10,37 @@
 
 {% block maincontent %}
 
+    <div class="row">
+        {% for item in listVideogames %}
+            <div class="col-md-4">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <i class="fa fa-gamepad"></i>
+                        <h3 class="box-title">{{item.nombreJuego}}</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="timeline-body">
+                            <center>
+                                {% if item.imagen == "default.png" %}
+                                    <img src="http://placehold.it/300x300" alt="..." class="margin">
+                                {% else %}
+                                    <img src="{{asset('uploads/game/' ~ item.imagen)}}" alt="..." class="margin" width="300" height="300">
+                                {%endif%}
+                            </center>
+                            <center><h1>${{item.precioVenta}}</h1></center>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{path("app_details_videogame", {'id': item.idVideojuego | urlencrypt})}}" class="btn btn-primary btn-block"><i class="fa fa-plus"></i>&nbsp;&nbsp;Más detalles</a>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        {% endfor %}
+        {{knp_pagination_render(listVideogames)}}
+    </div>
 {%endblock%}
 
 {% block js %}

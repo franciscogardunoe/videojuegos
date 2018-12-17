@@ -5,3 +5,11 @@ app_user:
 app_admin:
     path: /admin/dashboard
     defaults: { _controller: AppBundle:Default:adminDashboard }
+    
+app_details_videogame:
+    path: /user/videogame/details/{id}
+    defaults: { _controller: AppBundle:Root:detailsVideogame }
+
+app_register_recomendation:
+    path: /user/videogame/register/recomendation/{id}
+    defaults: { _controller: AppBundle:Root:registerRecomendation }

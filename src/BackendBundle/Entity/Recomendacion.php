@@ -31,16 +31,14 @@ class Recomendacion
      *
      * @ORM\Column(name="idRecomendacion", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idrecomendacion;
 
     /**
      * @var \Usuario
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Usuario")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idUsuario", referencedColumnName="idUsuario")
      * })
@@ -50,9 +48,7 @@ class Recomendacion
     /**
      * @var \Videojuego
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Videojuego")
+     * @ORM\ManyToOne(targetEntity="Videojuego")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idVideojuego", referencedColumnName="idVideojuego")
      * })
@@ -110,20 +106,6 @@ class Recomendacion
     }
 
     /**
-     * Set idrecomendacion
-     *
-     * @param integer $idrecomendacion
-     *
-     * @return Recomendacion
-     */
-    public function setIdrecomendacion($idrecomendacion)
-    {
-        $this->idrecomendacion = $idrecomendacion;
-
-        return $this;
-    }
-
-    /**
      * Get idrecomendacion
      *
      * @return integer
@@ -140,7 +122,7 @@ class Recomendacion
      *
      * @return Recomendacion
      */
-    public function setIdusuario(\BackendBundle\Entity\Usuario $idusuario)
+    public function setIdusuario(\BackendBundle\Entity\Usuario $idusuario = null)
     {
         $this->idusuario = $idusuario;
 
@@ -164,7 +146,7 @@ class Recomendacion
      *
      * @return Recomendacion
      */
-    public function setIdvideojuego(\BackendBundle\Entity\Videojuego $idvideojuego)
+    public function setIdvideojuego(\BackendBundle\Entity\Videojuego $idvideojuego = null)
     {
         $this->idvideojuego = $idvideojuego;
 
