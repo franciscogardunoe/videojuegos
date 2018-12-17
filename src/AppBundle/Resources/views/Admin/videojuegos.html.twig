@@ -4,25 +4,77 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/iCheck/all.css')}}">
 {% endblock %}
 
-{% block title %}Profesores{% endblock %}
-
-{% block css %}
-    
-{% endblock %}
+{% block title %}Videojuegos{% endblock %}
 
 {% block subtitle %}<small></small>{%endblock%}
 
 {% block navigation %}
-    <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active">
-        Profesores
-    </li>
+
 {%endblock%}
 
 {% block maincontent %}
-    
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Registrar Videojuego</h3>
+        </div>
+        <div class="box-body">
+            {{ form_start
+(formVideojuego) }}
+            {{ form_errors(formVideojuego) }}
+            {{ form_row(formVideojuego.nombrejuego)}}
+            {{ form_row(formVideojuego.lenguajes)}}
+            {{ form_row(formVideojuego.sipnosis)}}
+            {{ form_row(formVideojuego.precioventa)}}
+            {{ form_row(formVideojuego.idClasificacion)}}
+            {{ form_row(formVideojuego.idClasificaciondeTipo)}}
+            <br>
+            {{ form_widget(formVideojuego.submit, {'attr': {'class': 'btn btn-primary'},'label': 'Aceptar'}) }}
+            {{ form_end(formVideojuego) }}
+        </div>
+    </div>
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Videojuegos</h3>
+            </div>
+            
+            <div class="box-body">
+        {%if listVideojuegos!=null%}
+            <table class="table table-bordered">
+                <tr>
+                    <th>Videojuego</th>
+                    <th>Lenguaje</th>
+                    <th>Sinopsis</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Clasificacion</th>
+                    <th>Clasificacion de tipo</th>
+                    <th>Acciones</th>
+                <tr>
+                <tbody>
+                    {% for item in listVideojuegos %}
+                        <tr>
+                            <td>{{item.nombrejuego}}</td>
+                            <td>{{item.lenguajes}}</td>
+                            <td>{{item.sipnosis}}</td>
+                            <td>{{item.imagen}}</td>
+                            <td>{{item.precioventa}}</td>
+                            <td>{%if item.idclasificacion != null %}{{item.idclasificacion.clasificacionjuego}}{%else%}Sin Clasificación{%endif%}</td>
+                            <td>{%if item.idclasificaciondetipo != null %}{{item.idclasificaciondetipo.tipojuego}}{%else%}Sin Clasificación{%endif%}</td>
+                            <td>
+                                <a href="{{path('app_admin_update',{'id':item.idvideojuego | urlencrypt})}}" class="btn btn-primary">Modificar</a>
+                                <a href="{{path('app_admin_delete',{'id':item.idvideojuego})}}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {{knp_pagination_render(listVideojuegos)}}
+        {%endif%}
+        </div>
+        </div>
+
 {%endblock%}
 
 {% block js %}
-    
+
 {% endblock %}

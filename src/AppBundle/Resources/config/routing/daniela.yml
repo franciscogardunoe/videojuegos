@@ -1,2 +1,11 @@
-## YAML Template.
----
+app_admin_videojuegos:
+    path: /admin/videojuegos
+    defaults: { _controller: AppBundle:Daniela:videojuegos }
+    
+app_admin_update:
+    path: /admin/videojuegos/update/{id}
+    defaults: { _controller: AppBundle:Daniela:update }
+    
+app_admin_delete:
+    path: /admin/videojuegos/delete/{id}
+    defaults: { _controller: AppBundle:Daniela:delete }
