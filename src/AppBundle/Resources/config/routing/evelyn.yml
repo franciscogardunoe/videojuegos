@@ -1,2 +1,26 @@
 ## YAML Template.
----
+app_admin_tipos:
+    path: /admin/tipos
+    defaults: { _controller: AppBundle:Evelyn:tipos}
+    
+app_admin_update_tipo:
+    path: /admin/tipo/update/{id}
+    defaults: { _controller: AppBundle:Evelyn:update}
+
+app_admin_delete_tipo:
+    path: /admin/tipo/delete/{id}
+    defaults: { _controller: AppBundle:Evelyn:delete}
+    
+    
+##CATEGORIAS   
+app_admin_clasificaciones:
+    path: /admin/clasificaciones
+    defaults: { _controller: AppBundle:Evelyn:clasificaciones}
+    
+app_admin_update_clasificacion:
+    path: /admin/clasificacion/update/{id}
+    defaults: { _controller: AppBundle:Evelyn:updateClasificacion}
+
+app_admin_delete_clasificacion:
+    path: /admin/clasificacion/delete/{id}
+    defaults: { _controller: AppBundle:Evelyn:deleteClasificacion}

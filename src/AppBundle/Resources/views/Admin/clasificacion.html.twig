@@ -1,0 +1,66 @@
+{# empty Twig template #}
+{% extends 'AppBundle:Layout:template.html.twig' %}
+
+{% block css %}
+    
+{% endblock %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block subtitle %}<small></small>{%endblock%}
+
+{% block navigation %}
+
+{%endblock%}
+
+{% block maincontent %}
+    
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Registrar Clasificación de Videojuego</h3>
+        </div>
+        <div class="box-body">
+            {{ form_start
+(formClasificacion) }}
+            {{ form_errors(formClasificacion) }}
+            {{ form_row(formClasificacion.clasificacionjuego)}}
+            <br>
+            {{ form_widget(formClasificacion.submit, {'attr': {'class': 'btn btn-primary'},'label': 'Aceptar'}) }}
+            {{ form_end(formClasificacion) }}
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Lista de Clasificaciones de Videojuegos</h3>
+        </div>
+
+        <div class="box-body">
+            {%if listClasificacion!=null%}
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Clasificación de videojuego</th>
+                        <th>Acciones</th>
+                    <tr>
+                    <tbody>
+                        {% for item in listClasificacion %}
+                            <tr>
+                                <td>{{item.clasificacionjuego}}</td>
+                                <td>
+                                    <a href="{{path('app_admin_update_clasificacion',{'id':item.idclasificacion | urlencrypt})}}" class="btn btn-primary">Modificar</a>
+                                    <a href="{{path('app_admin_delete_clasificacion',{'id':item.idclasificacion})}}" class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+                {{knp_pagination_render(listClasificacion)}}
+            {%endif%}
+        </div>
+    </div>
+
+    
+{%endblock%}
+
+{% block js %}
+    
+{% endblock %}
